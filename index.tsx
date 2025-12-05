@@ -10,6 +10,7 @@ import {
   SecureDataExport,
   CSRFProtection
 } from "./security";
+import AgeRangePicker from "./AgeRangePicker";
 
 declare var html2pdf: any;
 
@@ -1410,14 +1411,17 @@ const App = () => {
 
             <section>
                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-5">Profile & Income</h3>
-                <InputGroup label="Current Age">
-                    <div className="flex items-center gap-4">
-                        <NumberInput value={inputs.currentAge} onChange={(v) => updateInput('currentAge', v)} />
-                        <span className="text-sm text-gray-400 font-medium">to</span>
-                        <NumberInput value={inputs.retirementAge} onChange={(v) => updateInput('retirementAge', v)} />
-                    </div>
-                    <p className="text-[11px] text-gray-400 mt-2 text-right">Retirement Age</p>
-                </InputGroup>
+                <div className="mb-6">
+                    <AgeRangePicker
+                        currentAge={inputs.currentAge}
+                        retirementAge={inputs.retirementAge}
+                        onChange={({ currentAge, retirementAge }) => {
+                            updateInput('currentAge', currentAge);
+                            updateInput('retirementAge', retirementAge);
+                            SecurityAuditLogger.logEvent('input_change', `Updated age range to ${currentAge}-${retirementAge}`, 'low');
+                        }}
+                    />
+                </div>
                 
                 <InputGroup label="Monthly Income">
                     <FormattedCurrencyInput value={inputs.monthlyIncome} onChange={(v) => updateInput('monthlyIncome', v)} />
