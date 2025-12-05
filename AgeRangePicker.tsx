@@ -30,6 +30,7 @@ export const AgeRangePicker: React.FC<AgeRangePickerProps> = ({
 }) => {
   const [localCurrentAge, setLocalCurrentAge] = useState<string>(String(currentAge));
   const [localRetirementAge, setLocalRetirementAge] = useState<string>(String(retirementAge));
+  const [activeThumb, setActiveThumb] = useState<"current" | "retirement" | null>(null);
 
   // Sync local state when props change
   useEffect(() => {
@@ -169,6 +170,7 @@ export const AgeRangePicker: React.FC<AgeRangePickerProps> = ({
             className="w-full px-3 py-2.5 text-sm font-semibold text-gray-900 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             aria-label="Retirement Age"
           />
+          <p className="text-xs text-slate-500 mt-1">in {yearsToRetirement} years</p>
         </div>
       </div>
 
@@ -195,6 +197,11 @@ export const AgeRangePicker: React.FC<AgeRangePickerProps> = ({
             max={maxAge}
             value={currentAge}
             onChange={handleCurrentAgeSliderChange}
+            onMouseDown={() => setActiveThumb("current")}
+            onTouchStart={() => setActiveThumb("current")}
+            onMouseUp={() => setActiveThumb(null)}
+            onTouchEnd={() => setActiveThumb(null)}
+            onBlur={() => setActiveThumb(null)}
             className="slider-input slider-input-left absolute w-full h-full opacity-0"
             style={{ zIndex: currentAge > maxAge - 10 ? 5 : 3 }}
             aria-label="Current Age Slider"
@@ -207,6 +214,11 @@ export const AgeRangePicker: React.FC<AgeRangePickerProps> = ({
             max={maxAge}
             value={retirementAge}
             onChange={handleRetirementAgeSliderChange}
+            onMouseDown={() => setActiveThumb("retirement")}
+            onTouchStart={() => setActiveThumb("retirement")}
+            onMouseUp={() => setActiveThumb(null)}
+            onTouchEnd={() => setActiveThumb(null)}
+            onBlur={() => setActiveThumb(null)}
             className="slider-input slider-input-right absolute w-full h-full opacity-0"
             style={{ zIndex: retirementAge < minAge + 10 ? 5 : 4 }}
             aria-label="Retirement Age Slider"
@@ -229,6 +241,34 @@ export const AgeRangePicker: React.FC<AgeRangePickerProps> = ({
               zIndex: 10,
             }}
           />
+
+          {/* Floating Tooltip for Current Age Thumb */}
+          {activeThumb === "current" && (
+            <div
+              className="absolute -top-6 px-2 py-1 rounded-full bg-slate-800 text-white text-xs shadow pointer-events-none"
+              style={{
+                left: `${currentAgePercent}%`,
+                transform: "translateX(-50%)",
+                zIndex: 20,
+              }}
+            >
+              {currentAge}
+            </div>
+          )}
+
+          {/* Floating Tooltip for Retirement Age Thumb */}
+          {activeThumb === "retirement" && (
+            <div
+              className="absolute -top-6 px-2 py-1 rounded-full bg-slate-800 text-white text-xs shadow pointer-events-none"
+              style={{
+                left: `${retirementAgePercent}%`,
+                transform: "translateX(-50%)",
+                zIndex: 20,
+              }}
+            >
+              {retirementAge}
+            </div>
+          )}
         </div>
       </div>
 
