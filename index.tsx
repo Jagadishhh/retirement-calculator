@@ -1642,7 +1642,7 @@ const App = () => {
                                                     {row.phase}
                                                 </span>
                                             </td>
-                                            <td className="px-8 py-4 text-xs font-medium text-gray-500 max-w-xs truncate">
+                                            <td className="px-8 py-4 text-xs font-medium text-gray-500 max-w-sm">
                                                 {row.note}
                                             </td>
                                         </tr>
