@@ -1,20 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Retirement Calculator
 
-# Run and deploy your AI Studio app
+A comprehensive web-based financial planning tool for retirement planning with advanced security features.
 
-This contains everything you need to run your app locally.
+## 🚀 Quick Start
 
-View your app in AI Studio: https://ai.studio/apps/drive/1teudhLPluM5wliaauXwqXk6iDexnEpDq
+**Prerequisites:** Node.js 16+
 
-## Run Locally
+```bash
+# 1. Install dependencies
+npm install
 
-**Prerequisites:**  Node.js
+# 2. Set your Gemini API key in .env.local
+GEMINI_API_KEY=your_key_here
 
+# 3. Run development server
+npm run dev
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+# 4. Open http://localhost:3000/retirement-calculator/
+```
+
+## 📚 Documentation
+
+For complete documentation including features, architecture, security details, and deployment:
+→ **See [DOCUMENTATION.md](./DOCUMENTATION.md)**
+
+## ✨ Features
+
+- 📊 Comprehensive retirement planning calculator
+- 📈 Multiple scenario modeling (Median, Best, Worst)
+- 🎯 Monte Carlo simulations
+- 💰 Major expense tracking
+- 📄 PDF report generation
+- 🔒 12 advanced security features
+- 📱 Fully responsive design
+
+## 🔒 Security
+
+This application includes:
+- AES-256-GCM encryption
+- Content Security Policy (CSP)
+- Input validation & sanitization
+- Security audit logging
+- Rate limiting
+- Session management
+- CSRF protection
+
+## 📖 More Information
+
+- **Full Documentation:** [DOCUMENTATION.md](./DOCUMENTATION.md)
+- **Security Details:** [DOCUMENTATION.md#-security-architecture](./DOCUMENTATION.md#-security-architecture)
+- **Setup & Deployment:** [DOCUMENTATION.md#-installation--setup](./DOCUMENTATION.md#-installation--setup)
+
+---
+
+Made with ❤️ for retirement planning
