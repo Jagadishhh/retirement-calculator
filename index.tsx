@@ -1429,6 +1429,7 @@ const App = () => {
                 
                 <InputGroup label="Monthly Expenses">
                     <FormattedCurrencyInput value={inputs.monthlyExpenses} onChange={(v) => updateInput('monthlyExpenses', v)} />
+                    <p className="text-xs text-slate-500 mt-1">Remaining amount is treated as savings.</p>
                 </InputGroup>
 
                 <InputGroup label="Existing Corpus" subLabel="Total savings, investments, PF, etc.">
