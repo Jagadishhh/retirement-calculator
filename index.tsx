@@ -1626,7 +1626,7 @@ const App = () => {
                                         <tr key={row.age} className={`hover:bg-gray-50 transition-colors ${row.age === inputs.retirementAge ? 'bg-indigo-50/20' : ''}`}>
                                             <td className="px-8 py-4 font-semibold text-gray-900">{row.age}</td>
                                             <td className="px-8 py-4 text-gray-500 font-medium">{row.year}</td>
-                                            <td className={`px-8 py-4 font-mono font-medium text-right ${row.cashflow >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                                            <td className={`px-8 py-4 font-mono font-medium text-right whitespace-nowrap ${row.cashflow >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                                                 {formatCurrency(row.cashflow)}
                                             </td>
                                             <td className="px-8 py-4 font-mono font-bold text-gray-900 text-right">
